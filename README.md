@@ -2,7 +2,7 @@
 
 > **A modern, interactive documentation system for Power Platform solutions including Power Automate Flows, Power Apps, Data Pipelines, and Dashboards.**
 
-[![Live Demo](https://img.shields.io/badge/demo-live-blue.svg)](https://your-username.github.io/solution-hub)
+[![Live Demo](https://img.shields.io/badge/demo-live-blue.svg)](https://arturlima25.github.io/documentacao_solucoes)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
@@ -28,7 +28,7 @@
 2. Name your new repository (e.g., `my-power-platform-portfolio`)
 3. Clone your new repository:
    ```bash
-   git clone https://github.com/YOUR-USERNAME/my-power-platform-portfolio.git
+   git clone https://github.com/arturlima25/my-power-platform-portfolio.git
    cd my-power-platform-portfolio
    ```
 4. Open `index.html` in your browser or deploy to GitHub Pages
@@ -37,7 +37,7 @@
 
 1. Fork this repository
 2. Enable GitHub Pages in Settings → Pages → Source: `main` branch
-3. Access your portfolio at `https://YOUR-USERNAME.github.io/solution-hub`
+3. Access your portfolio at `https://arturlima25.github.io/documentacao_solucoes`
 
 ### Option 3: Download and Run Locally
 
@@ -49,7 +49,7 @@
 ## 📂 Project Structure
 
 ```
-solution-hub/
+documentacao_solucoes/
 ├── index.html           # Main HTML file
 ├── styles.css           # Styling and design system
 ├── script.js            # Application logic
@@ -216,12 +216,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact & Support
 
-- **Issues**: [GitHub Issues](https://github.com/your-username/solution-hub/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-username/solution-hub/discussions)
-- **LinkedIn**: [Your LinkedIn Profile](#)
+- **Issues**: [GitHub Issues](https://github.com/your-username/documentacao_solucoes/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/your-username/documentacao_solucoes/discussions)
+- **LinkedIn**: [Artur Lima](https://www.linkedin.com/in/artur-lima-046829162/)
 
 ---
 
 **⭐ If you find this useful, please consider giving it a star!**
 
-Made with 💙 by [Your Name](https://github.com/your-username)
+Made with 💙 by [Artur Lima](https://github.com/arturlima25)

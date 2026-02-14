@@ -35,8 +35,8 @@ Enhancement suggestions are welcome! Please provide:
 
 1. Fork and clone the repository:
    ```bash
-   git clone https://github.com/YOUR-USERNAME/solution-hub.git
-   cd solution-hub
+   git clone https://github.com/YOUR-USERNAME/documentacao_solucoes.git
+   cd documentacao_solucoes
    ```
 
 2. Open `index.html` in your browser to test changes
@@ -129,8 +129,8 @@ Contributors will be:
 ## 📧 Questions?
 
 Feel free to:
-- Open a [Discussion](https://github.com/your-username/solution-hub/discussions)
-- Create an [Issue](https://github.com/your-username/solution-hub/issues)
+- Open a [Discussion](https://github.com/arturlima25/documentacao_solucoes/discussions)
+- Create an [Issue](https://github.com/arturlima25/documentacao_solucoes/issues)
 - Reach out on [LinkedIn](#)
 
 ---

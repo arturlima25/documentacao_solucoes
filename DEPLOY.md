@@ -15,7 +15,7 @@ This guide will help you deploy **Solution Hub** to GitHub Pages so you can shar
 1. Go to [GitHub](https://github.com) and log in
 2. Click the **"+"** icon in the top right → **"New repository"**
 3. Repository settings:
-   - **Name**: `solution-hub` (or any name you prefer)
+   - **Name**: `documentacao_solucoes` (or any name you prefer)
    - **Description**: "My Power Platform Portfolio - Flows, Apps, Pipelines & Dashboards"
    - **Visibility**: Public (required for free GitHub Pages)
    - **Don't** initialize with README (we already have one)
@@ -35,8 +35,8 @@ git add .
 # Create first commit
 git commit -m "Initial commit - Solution Hub portfolio"
 
-# Add remote repository (replace YOUR-USERNAME with your GitHub username)
-git remote add origin https://github.com/YOUR-USERNAME/solution-hub.git
+# Add remote repository (replace arturlima25 with your GitHub username)
+git remote add origin https://github.com/arturlima25/documentacao_solucoes.git
 
 # Push to GitHub
 git branch -M main
@@ -56,7 +56,7 @@ git push -u origin main
 ### 4. Wait for Deployment
 
 - GitHub will build and deploy your site (usually takes 1-2 minutes)
-- A green box will appear with your site URL: `https://YOUR-USERNAME.github.io/solution-hub/`
+- A green box will appear with your site URL: `https://arturlima25.github.io/documentacao_solucoes/`
 - Click the link to view your portfolio!
 
 ## Custom Domain (Optional)
@@ -67,7 +67,7 @@ Want to use your own domain like `portfolio.yourdomain.com`?
 2. In your domain provider's DNS settings, add:
    - **Type**: CNAME
    - **Name**: `portfolio` (or `www`)
-   - **Value**: `YOUR-USERNAME.github.io`
+   - **Value**: `arturlima25.github.io`
 3. Create a file named `CNAME` in your repository root with your domain:
    ```
    portfolio.yourdomain.com
@@ -118,7 +118,7 @@ GitHub Pages will automatically rebuild and deploy your changes!
 
 - [GitHub Pages Documentation](https://docs.github.com/en/pages)
 - [GitHub Pages Troubleshooting](https://docs.github.com/en/pages/getting-started-with-github-pages/troubleshooting-404-errors-for-github-pages-sites)
-- [Open an Issue](https://github.com/your-username/solution-hub/issues)
+- [Open an Issue](https://github.com/your-username/documentacao_solucoes/issues)
 
 ---
 
