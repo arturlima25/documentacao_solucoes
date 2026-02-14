@@ -1,0 +1,42 @@
+# ═══════════════════════════════════════════════════════════════
+# SOLUTION HUB - .gitignore
+# ═══════════════════════════════════════════════════════════════
+
+# Pasta do Claude (não precisa no Git)
+.claude/
+
+# Arquivos temporários do sistema
+*.tmp
+*.temp
+*.log
+nul
+
+# Arquivos de backup
+*.bak
+*.backup
+*~
+
+# Arquivos do sistema operacional
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Arquivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node modules (caso adicione no futuro)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python cache (do servidor local)
+__pycache__/
+*.pyc
+*.pyo
+
+# Arquivos de build (caso adicione no futuro)
+dist/
+build/

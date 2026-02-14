@@ -1,0 +1,631 @@
+{
+  "flows": [
+    {
+      "id": "flow-1001",
+      "nome": "New Employee Onboarding Automation",
+      "projeto": "Human Resources",
+      "gatilho": "Manual",
+      "descricao": "Automates the complete onboarding process for new employees including account creation, email setup, team notifications, and welcome package delivery scheduling.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-10"
+    },
+    {
+      "id": "flow-1002",
+      "nome": "Daily Sales Report Generator",
+      "projeto": "Sales",
+      "gatilho": "Agendado",
+      "descricao": "Generates and distributes daily sales performance reports to management team every morning at 8 AM, including metrics, charts, and team comparisons.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-12"
+    },
+    {
+      "id": "flow-1003",
+      "nome": "Invoice Payment Reminder",
+      "projeto": "Finance",
+      "gatilho": "Agendado",
+      "descricao": "Sends automated payment reminders to customers 7 days before invoice due date, with escalation emails at 3 days and on due date.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-11"
+    },
+    {
+      "id": "flow-1004",
+      "nome": "Customer Feedback Webhook Handler",
+      "projeto": "E-commerce",
+      "gatilho": "Webhook",
+      "descricao": "Receives customer feedback from website forms, categorizes by sentiment analysis, and routes to appropriate department with priority flags.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-13"
+    },
+    {
+      "id": "flow-1005",
+      "nome": "Inventory Low Stock Alert",
+      "projeto": "Inventory",
+      "gatilho": "Agendado",
+      "descricao": "Monitors inventory levels every 2 hours and sends alerts to procurement team when stock falls below minimum threshold for any product.",
+      "status": "ativo",
+      "dependencias": ["flow-1006"],
+      "ultima_atualizacao": "2026-02-09"
+    },
+    {
+      "id": "flow-1006",
+      "nome": "Auto Purchase Order Creation",
+      "projeto": "Inventory",
+      "gatilho": "Webhook",
+      "descricao": "Automatically creates purchase orders when inventory reaches critical levels, using historical data to determine optimal order quantities.",
+      "status": "ativo",
+      "dependencias": ["flow-1005"],
+      "ultima_atualizacao": "2026-02-09"
+    },
+    {
+      "id": "flow-1007",
+      "nome": "Support Ticket Assignment",
+      "projeto": "Customer Support",
+      "gatilho": "Webhook",
+      "descricao": "Automatically assigns incoming support tickets to available agents based on expertise, workload, and priority level using round-robin algorithm.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-14"
+    },
+    {
+      "id": "flow-1008",
+      "nome": "Weekly Team Performance Summary",
+      "projeto": "Human Resources",
+      "gatilho": "Agendado",
+      "descricao": "Compiles weekly performance metrics for all teams, including productivity stats, completed tasks, and goal achievement rates. Runs every Friday at 5 PM.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-07"
+    },
+    {
+      "id": "flow-1009",
+      "nome": "Lead Qualification Automation",
+      "projeto": "Sales",
+      "gatilho": "Webhook",
+      "descricao": "Scores and qualifies incoming leads based on predefined criteria, automatically routing hot leads to sales team and nurturing cold leads.",
+      "status": "ativo",
+      "dependencias": ["flow-1010"],
+      "ultima_atualizacao": "2026-02-12"
+    },
+    {
+      "id": "flow-1010",
+      "nome": "Lead Nurture Campaign",
+      "projeto": "Sales",
+      "gatilho": "Agendado",
+      "descricao": "Sends personalized follow-up emails to leads based on their engagement level and interests, running daily at 10 AM and 3 PM.",
+      "status": "ativo",
+      "dependencias": ["flow-1009"],
+      "ultima_atualizacao": "2026-02-12"
+    },
+    {
+      "id": "flow-1011",
+      "nome": "Monthly Budget Report",
+      "projeto": "Finance",
+      "gatilho": "Agendado",
+      "descricao": "Generates comprehensive monthly budget reports with variance analysis, sends to department heads on the first day of each month.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-01"
+    },
+    {
+      "id": "flow-1012",
+      "nome": "Expense Approval Workflow",
+      "projeto": "Finance",
+      "gatilho": "Manual",
+      "descricao": "Routes employee expense submissions through approval chain based on amount and category, with automatic escalation after 48 hours.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-10"
+    },
+    {
+      "id": "flow-1013",
+      "nome": "Order Fulfillment Status Update",
+      "projeto": "E-commerce",
+      "gatilho": "Webhook",
+      "descricao": "Updates customers via email and SMS when order status changes (processing, shipped, delivered), with tracking information.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-13"
+    },
+    {
+      "id": "flow-1014",
+      "nome": "Product Review Notification",
+      "projeto": "E-commerce",
+      "gatilho": "Agendado",
+      "descricao": "Sends review request emails to customers 7 days after delivery, with incentive codes for completed reviews.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-11"
+    },
+    {
+      "id": "flow-1015",
+      "nome": "Compliance Document Expiry Alert",
+      "projeto": "Compliance",
+      "gatilho": "Agendado",
+      "descricao": "Monitors compliance documents and certifications, sending alerts 30, 15, and 7 days before expiration to responsible parties.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-08"
+    },
+    {
+      "id": "flow-1016",
+      "nome": "Data Backup Verification",
+      "projeto": "IT Operations",
+      "gatilho": "Agendado",
+      "descricao": "Verifies successful completion of nightly data backups and sends alerts if any backup job fails or is incomplete.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-14"
+    },
+    {
+      "id": "flow-1017",
+      "nome": "Security Incident Response",
+      "projeto": "IT Operations",
+      "gatilho": "Webhook",
+      "descricao": "Triggers incident response workflow when security threats are detected, notifying security team and initiating containment procedures.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-13"
+    },
+    {
+      "id": "flow-1018",
+      "nome": "Meeting Room Booking Confirmation",
+      "projeto": "Facilities",
+      "gatilho": "Webhook",
+      "descricao": "Sends booking confirmations, calendar invites, and reminder notifications for meeting room reservations.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-12"
+    },
+    {
+      "id": "flow-1019",
+      "nome": "Contract Renewal Reminder",
+      "projeto": "Legal",
+      "gatilho": "Agendado",
+      "descricao": "Tracks contract expiration dates and sends renewal reminders to contract owners 90, 60, and 30 days before expiration.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-05"
+    },
+    {
+      "id": "flow-1020",
+      "nome": "Customer Churn Prediction Alert",
+      "projeto": "Customer Support",
+      "gatilho": "Agendado",
+      "descricao": "Uses ML model to identify at-risk customers based on engagement metrics, triggering retention campaigns and sales team alerts.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-11"
+    },
+    {
+      "id": "flow-1021",
+      "nome": "Social Media Mention Tracker",
+      "projeto": "Marketing",
+      "gatilho": "Agendado",
+      "descricao": "Monitors social media platforms for brand mentions every 30 minutes, categorizing sentiment and alerting team to urgent issues.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-14"
+    },
+    {
+      "id": "flow-1022",
+      "nome": "Campaign Performance Digest",
+      "projeto": "Marketing",
+      "gatilho": "Agendado",
+      "descricao": "Generates daily digest of marketing campaign performance metrics, A/B test results, and ROI calculations sent to marketing team.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-13"
+    },
+    {
+      "id": "flow-1023",
+      "nome": "Equipment Maintenance Scheduler",
+      "projeto": "Facilities",
+      "gatilho": "Agendado",
+      "descricao": "Schedules preventive maintenance based on equipment usage hours and creates work orders for facilities team.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-09"
+    },
+    {
+      "id": "flow-1024",
+      "nome": "Employee Time-Off Approval",
+      "projeto": "Human Resources",
+      "gatilho": "Manual",
+      "descricao": "Routes time-off requests through approval workflow, checks team coverage, and updates calendar upon approval.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-10"
+    },
+    {
+      "id": "flow-1025",
+      "nome": "Vendor Payment Processing",
+      "projeto": "Finance",
+      "gatilho": "Manual",
+      "descricao": "Processes vendor invoices through approval chain, validates against purchase orders, and initiates payment transactions.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-11"
+    },
+    {
+      "id": "flow-1026",
+      "nome": "Sales Pipeline Health Check",
+      "projeto": "Sales",
+      "gatilho": "Agendado",
+      "descricao": "Analyzes sales pipeline weekly, identifying stagnant deals and suggesting actions to sales reps to move deals forward.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-07"
+    },
+    {
+      "id": "flow-1027",
+      "nome": "Quality Assurance Report",
+      "projeto": "Quality Control",
+      "gatilho": "Agendado",
+      "descricao": "Collects QA metrics from production systems, generates defect reports, and distributes to development teams daily.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-12"
+    },
+    {
+      "id": "flow-1028",
+      "nome": "Customer Satisfaction Survey",
+      "projeto": "Customer Support",
+      "gatilho": "Webhook",
+      "descricao": "Sends NPS surveys after support ticket resolution, analyzes responses, and alerts management to negative feedback.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-13"
+    },
+    {
+      "id": "flow-1029",
+      "nome": "Competitor Price Monitoring",
+      "projeto": "E-commerce",
+      "gatilho": "Agendado",
+      "descricao": "Scrapes competitor websites for pricing data daily, alerts pricing team when competitors adjust prices significantly.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-14"
+    },
+    {
+      "id": "flow-1030",
+      "nome": "Data Quality Validation",
+      "projeto": "IT Operations",
+      "gatilho": "Agendado",
+      "descricao": "Runs data quality checks across databases, identifying duplicates, missing values, and inconsistencies with automated cleanup where possible.",
+      "status": "ativo",
+      "dependencias": [],
+      "ultima_atualizacao": "2026-02-12"
+    }
+  ],
+  "aplicativos": [
+    {
+      "id": "app-2001",
+      "nome": "Employee Self-Service Portal",
+      "projeto": "Human Resources",
+      "link": "https://apps.powerapps.com/play/hr-portal",
+      "descricao": "Comprehensive employee portal for managing personal information, time-off requests, benefits enrollment, payslips, and performance reviews. Integrates with HR systems and payroll.",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-10"
+    },
+    {
+      "id": "app-2002",
+      "nome": "Sales CRM Mobile App",
+      "projeto": "Sales",
+      "link": "https://apps.powerapps.com/play/sales-crm",
+      "descricao": "Mobile-first CRM application allowing sales reps to manage leads, log activities, update opportunities, and access customer information on the go.",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-12"
+    },
+    {
+      "id": "app-2003",
+      "nome": "Expense Management System",
+      "projeto": "Finance",
+      "link": "https://expense-tracker.azurewebsites.net",
+      "descricao": "Web application for submitting, tracking, and approving employee expenses. Features receipt scanning, policy compliance checks, and integration with accounting software.",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-11"
+    },
+    {
+      "id": "app-2004",
+      "nome": "Inventory Control Dashboard",
+      "projeto": "Inventory",
+      "link": "https://inventory.company.com",
+      "descricao": "Real-time inventory management system with barcode scanning, stock level monitoring, automated reordering, and warehouse location tracking.",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-09"
+    },
+    {
+      "id": "app-2005",
+      "nome": "Customer Support Ticketing",
+      "projeto": "Customer Support",
+      "link": "https://apps.powerapps.com/play/support-desk",
+      "descricao": "Ticketing system for customer support team to manage, track, and resolve customer issues. Includes SLA tracking, knowledge base integration, and customer communication.",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-14"
+    },
+    {
+      "id": "app-2006",
+      "nome": "Quality Inspection App",
+      "projeto": "Quality Control",
+      "link": "https://apps.powerapps.com/play/qa-inspector",
+      "descricao": "Mobile app for quality inspectors to perform product inspections, log defects, capture photos, and generate quality reports on the production floor.",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-12"
+    },
+    {
+      "id": "app-2007",
+      "nome": "Marketing Campaign Manager",
+      "projeto": "Marketing",
+      "link": "https://marketing-hub.company.com",
+      "descricao": "Campaign planning and execution platform for managing multi-channel marketing campaigns, tracking budgets, and measuring performance across all marketing initiatives.",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-13"
+    },
+    {
+      "id": "app-2008",
+      "nome": "Facilities Booking System",
+      "projeto": "Facilities",
+      "link": "https://apps.powerapps.com/play/facility-booking",
+      "descricao": "Reservation system for meeting rooms, equipment, parking spots, and other company facilities. Features calendar integration, capacity management, and automated confirmations.",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-12"
+    },
+    {
+      "id": "app-2009",
+      "nome": "Document Management Portal",
+      "projeto": "Legal",
+      "link": "https://docs-portal.company.com",
+      "descricao": "Centralized document repository for legal contracts, policies, and compliance documents with version control, approval workflows, and expiration tracking.",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-08"
+    },
+    {
+      "id": "app-2010",
+      "nome": "Product Catalog Manager",
+      "projeto": "E-commerce",
+      "link": "https://catalog-admin.company.com",
+      "descricao": "Admin tool for managing product catalogs, pricing, inventory sync, product descriptions, images, and multi-channel distribution for e-commerce platform.",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-13"
+    }
+  ],
+  "pipelines": [
+    {
+      "id": "pipe-3001",
+      "nome": "Daily Sales ETL Pipeline",
+      "projeto": "Sales",
+      "periodicidade": "Daily at 6:00 AM",
+      "descricao": "Extracts sales transactions from CRM and ERP systems, transforms data by cleaning, deduplicating, and enriching with customer information, then loads into data warehouse for reporting and analytics.",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-12",
+      "repo_link": "https://github.com/company/sales-etl-pipeline"
+    },
+    {
+      "id": "pipe-3002",
+      "nome": "Customer Data Integration",
+      "projeto": "Customer Support",
+      "periodicidade": "Every 4 hours",
+      "descricao": "Synchronizes customer data across multiple systems (CRM, Support, Billing) ensuring data consistency and creating a unified customer view for all departments.",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-14",
+      "repo_link": "https://github.com/company/customer-data-sync"
+    },
+    {
+      "id": "pipe-3003",
+      "nome": "Inventory Real-time Sync",
+      "projeto": "Inventory",
+      "periodicidade": "Every 15 minutes",
+      "descricao": "Real-time pipeline that monitors inventory changes from warehouse management system, updates stock levels across all sales channels, and triggers reorder workflows when thresholds are met.",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-09",
+      "repo_link": "https://github.com/company/inventory-sync"
+    },
+    {
+      "id": "pipe-3004",
+      "nome": "Financial Consolidation Pipeline",
+      "projeto": "Finance",
+      "periodicidade": "Daily at 11:00 PM",
+      "descricao": "Consolidates financial data from multiple subsidiaries and departments, performs currency conversions, calculates financial ratios, and prepares data for executive dashboards and regulatory reporting.",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-11",
+      "repo_link": "https://github.com/company/financial-consolidation"
+    },
+    {
+      "id": "pipe-3005",
+      "nome": "Marketing Analytics Aggregator",
+      "projeto": "Marketing",
+      "periodicidade": "Hourly",
+      "descricao": "Aggregates marketing performance data from various sources (Google Ads, Facebook, LinkedIn, email campaigns), normalizes metrics, and provides unified marketing attribution analysis.",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-13",
+      "repo_link": "https://github.com/company/marketing-analytics"
+    },
+    {
+      "id": "pipe-3006",
+      "nome": "HR Analytics Data Warehouse",
+      "projeto": "Human Resources",
+      "periodicidade": "Daily at 2:00 AM",
+      "descricao": "Extracts employee data, performance metrics, attendance records, and compensation information from HR systems, transforming into dimensional model for workforce analytics and strategic planning.",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-10",
+      "repo_link": "https://github.com/company/hr-data-warehouse"
+    }
+  ],
+  "dashboards": [
+    {
+      "id": "dash-4001",
+      "nome": "Executive KPI Dashboard",
+      "projeto": "Executive",
+      "tipo": "Power BI",
+      "link": "https://app.powerbi.com/executive-kpi",
+      "descricao": "Real-time executive dashboard displaying key performance indicators across all business units including revenue, costs, customer acquisition, employee metrics, and strategic initiative progress.",
+      "frequencia": "Real-time",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-14"
+    },
+    {
+      "id": "dash-4002",
+      "nome": "Sales Performance Analytics",
+      "projeto": "Sales",
+      "tipo": "Power BI",
+      "link": "https://app.powerbi.com/sales-performance",
+      "descricao": "Comprehensive sales analytics showing pipeline health, win rates, sales cycle length, rep performance, territory analysis, and revenue forecasting with drill-down capabilities.",
+      "frequencia": "Hourly",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-12"
+    },
+    {
+      "id": "dash-4003",
+      "nome": "Financial Overview Report",
+      "projeto": "Finance",
+      "tipo": "Power BI",
+      "link": "https://app.powerbi.com/financial-overview",
+      "descricao": "Financial performance dashboard with P&L statements, cash flow analysis, budget vs actuals, expense tracking, and financial KPIs with month-over-month and year-over-year comparisons.",
+      "frequencia": "Daily",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-11"
+    },
+    {
+      "id": "dash-4004",
+      "nome": "Customer Support Metrics",
+      "projeto": "Customer Support",
+      "tipo": "Tableau",
+      "link": "https://tableau.company.com/support-metrics",
+      "descricao": "Support team performance dashboard tracking ticket volume, resolution time, SLA compliance, customer satisfaction scores, and agent productivity metrics.",
+      "frequencia": "Real-time",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-14"
+    },
+    {
+      "id": "dash-4005",
+      "nome": "Inventory Status Report",
+      "projeto": "Inventory",
+      "tipo": "Excel Dashboard",
+      "link": "https://sharepoint.company.com/inventory-dashboard",
+      "descricao": "Inventory management dashboard showing stock levels by location, reorder points, aging inventory, turnover rates, and stockout risks across all warehouses.",
+      "frequencia": "Every 4 hours",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-09"
+    },
+    {
+      "id": "dash-4006",
+      "nome": "Marketing Campaign ROI",
+      "projeto": "Marketing",
+      "tipo": "Google Data Studio",
+      "link": "https://datastudio.google.com/marketing-roi",
+      "descricao": "Marketing effectiveness dashboard analyzing campaign performance, customer acquisition costs, conversion rates, channel attribution, and return on marketing investment.",
+      "frequencia": "Daily",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-13"
+    },
+    {
+      "id": "dash-4007",
+      "nome": "HR Workforce Analytics",
+      "projeto": "Human Resources",
+      "tipo": "Power BI",
+      "link": "https://app.powerbi.com/hr-analytics",
+      "descricao": "Human capital analytics including headcount trends, turnover analysis, diversity metrics, compensation benchmarking, performance distribution, and recruitment funnel analysis.",
+      "frequencia": "Weekly",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-10"
+    },
+    {
+      "id": "dash-4008",
+      "nome": "E-commerce Conversion Funnel",
+      "projeto": "E-commerce",
+      "tipo": "Tableau",
+      "link": "https://tableau.company.com/ecommerce-funnel",
+      "descricao": "E-commerce analytics tracking visitor behavior, conversion funnel, cart abandonment, product performance, customer segments, and revenue by channel.",
+      "frequencia": "Real-time",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-13"
+    },
+    {
+      "id": "dash-4009",
+      "nome": "Quality Control Dashboard",
+      "projeto": "Quality Control",
+      "tipo": "Power BI",
+      "link": "https://app.powerbi.com/quality-metrics",
+      "descricao": "Quality metrics dashboard displaying defect rates, inspection results, root cause analysis, corrective action tracking, and quality trends over time.",
+      "frequencia": "Daily",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-12"
+    },
+    {
+      "id": "dash-4010",
+      "nome": "IT Operations Monitor",
+      "projeto": "IT Operations",
+      "tipo": "Tableau",
+      "link": "https://tableau.company.com/it-operations",
+      "descricao": "IT operations dashboard monitoring system uptime, incident management, service desk performance, infrastructure health, and security events.",
+      "frequencia": "Real-time",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-14"
+    },
+    {
+      "id": "dash-4011",
+      "nome": "Compliance Tracking Report",
+      "projeto": "Compliance",
+      "tipo": "Excel Dashboard",
+      "link": "https://sharepoint.company.com/compliance-dashboard",
+      "descricao": "Regulatory compliance dashboard tracking certification status, audit findings, policy adherence, training completion, and risk assessment scores.",
+      "frequencia": "Weekly",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-08"
+    },
+    {
+      "id": "dash-4012",
+      "nome": "Facilities Management Overview",
+      "projeto": "Facilities",
+      "tipo": "Power BI",
+      "link": "https://app.powerbi.com/facilities-mgmt",
+      "descricao": "Facilities operations dashboard showing space utilization, maintenance schedules, energy consumption, work order status, and vendor performance metrics.",
+      "frequencia": "Daily",
+      "status": "ativo",
+      "ultima_atualizacao": "2026-02-12"
+    }
+  ],
+  "projetos": [
+    "Executive",
+    "Sales",
+    "Finance",
+    "Human Resources",
+    "Customer Support",
+    "E-commerce",
+    "Inventory",
+    "Marketing",
+    "IT Operations",
+    "Quality Control",
+    "Legal",
+    "Compliance",
+    "Facilities"
+  ],
+  "tipos_gatilho": [
+    "Agendado",
+    "Manual",
+    "Webhook"
+  ],
+  "tipos_aplicativo": [
+    "Power Apps",
+    "Python Script",
+    "Power BI",
+    "Web App"
+  ],
+  "tipos_pipeline": [
+    "ETL",
+    "Integração SAP",
+    "Processamento Batch",
+    "Real-time"
+  ],
+  "tipos_dashboard": [
+    "Power BI",
+    "Excel Dashboard",
+    "Relatório SAP",
+    "Google Data Studio",
+    "Tableau"
+  ]
+}

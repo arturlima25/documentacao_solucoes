@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solution Hub - Power Platform Documentation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ═══════════════════════════════════════════════════════════════
+       HEADER
+       ═══════════════════════════════════════════════════════════════ -->
+  <header class="header">
+    <div class="header-content">
+      <h1>🎯 Solution Hub - Power Platform Portfolio</h1>
+      <div class="header-actions">
+        <span id="unsavedIndicator" class="unsaved-indicator">
+          ⚠️ Alterações não exportadas
+        </span>
+        <button id="configBtn" class="export-btn">
+          ⚙️ Configurações
+        </button>
+        <button id="saveDirectBtn" class="export-btn" title="Salvar direto no arquivo (navegadores modernos)">
+          💾 Salvar Direto
+        </button>
+        <button id="exportBtn" class="export-btn" title="Baixar cópia do arquivo">
+          📥 Exportar JSON
+        </button>
+      </div>
+    </div>
+
+    <!-- TABS DE NAVEGAÇÃO -->
+    <div class="tabs-container">
+      <div class="tabs">
+        <button class="tab active" data-tab="flows">
+          🔄 Power Automate Flows
+        </button>
+        <button class="tab" data-tab="apps">
+          📱 Aplicativos
+        </button>
+        <button class="tab" data-tab="pipelines">
+          🔧 Pipelines de Dados
+        </button>
+        <button class="tab" data-tab="dashboards">
+          📊 Dashboards/Relatórios
+        </button>
+        <button class="tab" data-tab="stats">
+          📈 Estatísticas
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       FILTROS
+       ═══════════════════════════════════════════════════════════════ -->
+  <div class="filters">
+    <div class="filter-row">
+      <div class="filter-group">
+        <label for="projetoFilter">📁 Projeto</label>
+        <select id="projetoFilter">
+          <option value="">Todos os projetos</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="gatilhoFilter">⚡ Tipo de Gatilho</label>
+        <select id="gatilhoFilter">
+          <option value="">Todos os gatilhos</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="searchInput">🔍 Buscar</label>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Digite para buscar..."
+        />
+      </div>
+
+      <div class="filter-actions">
+        <button id="clearFiltersBtn" class="clear-filters-btn">
+          Limpar Filtros
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       CONTADOR
+       ═══════════════════════════════════════════════════════════════ -->
+  <div id="counter" class="counter">
+    0 itens encontrados
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       CONTEÚDO POR TAB
+       ═══════════════════════════════════════════════════════════════ -->
+
+  <!-- TAB: FLOWS -->
+  <div id="tabFlows" class="tab-content active">
+    <div id="flowsGrid" class="flows-grid">
+      <!-- Cards de flows serão inseridos aqui -->
+    </div>
+  </div>
+
+  <!-- TAB: APLICATIVOS -->
+  <div id="tabApps" class="tab-content">
+    <div id="appsGrid" class="flows-grid">
+      <!-- Cards de aplicativos serão inseridos aqui -->
+    </div>
+  </div>
+
+  <!-- TAB: PIPELINES -->
+  <div id="tabPipelines" class="tab-content">
+    <div id="pipelinesGrid" class="flows-grid">
+      <!-- Cards de pipelines serão inseridos aqui -->
+    </div>
+  </div>
+
+  <!-- TAB: DASHBOARDS/RELATÓRIOS -->
+  <div id="tabDashboards" class="tab-content">
+    <div id="dashboardsGrid" class="flows-grid">
+      <!-- Cards de dashboards serão inseridos aqui -->
+    </div>
+  </div>
+
+  <!-- TAB: ESTATÍSTICAS -->
+  <div id="tabStats" class="tab-content">
+    <div class="stats-container">
+      <!-- Estatísticas serão inseridas aqui -->
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       BOTÃO FLUTUANTE ADICIONAR
+       ═══════════════════════════════════════════════════════════════ -->
+  <button id="fabBtn" class="fab" title="Adicionar novo item">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="5" x2="12" y2="19"></line>
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+    </svg>
+  </button>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       MODAL ADICIONAR/EDITAR
+       ═══════════════════════════════════════════════════════════════ -->
+  <div id="modalOverlay" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle" class="modal-title">Adicionar Novo Flow</h2>
+        <button id="closeModalBtn" class="close-modal">×</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="flowForm">
+          <!-- Nome -->
+          <div class="form-group">
+            <label for="flowNome">Nome do Flow *</label>
+            <input
+              type="text"
+              id="flowNome"
+              placeholder="Ex: Alerta de Inconformidades Fiscais"
+              required
+            />
+          </div>
+
+          <!-- Projeto -->
+          <div class="form-group">
+            <label for="flowProjeto">Projeto *</label>
+            <select id="flowProjeto" required>
+              <option value="">Selecione um projeto</option>
+            </select>
+            <div id="newProjetoInput" class="new-projeto-input">
+              <input
+                type="text"
+                id="newProjetoNome"
+                placeholder="Nome do novo projeto"
+              />
+            </div>
+          </div>
+
+          <!-- Tipo de Gatilho -->
+          <div class="form-group">
+            <label for="flowGatilho">Tipo de Gatilho *</label>
+            <select id="flowGatilho" required>
+              <option value="">Selecione um gatilho</option>
+            </select>
+          </div>
+
+          <!-- Descrição -->
+          <div class="form-group">
+            <label for="flowDescricao">Descrição</label>
+            <textarea
+              id="flowDescricao"
+              placeholder="Descreva o que este flow faz..."
+            ></textarea>
+          </div>
+
+          <!-- Status -->
+          <div class="form-group">
+            <label>Status *</label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input
+                  type="radio"
+                  id="statusAtivo"
+                  name="status"
+                  value="ativo"
+                  checked
+                />
+                <label for="statusAtivo">✅ Ativo</label>
+              </div>
+              <div class="radio-option">
+                <input
+                  type="radio"
+                  id="statusInativo"
+                  name="status"
+                  value="inativo"
+                />
+                <label for="statusInativo">⛔ Inativo</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dependências -->
+          <div class="form-group">
+            <label>Dependências (opcional)</label>
+            <div id="dependenciasContainer" class="multi-select-container">
+              <!-- Checkboxes serão inseridos via JavaScript -->
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button id="cancelBtn" class="btn btn-secondary">Cancelar</button>
+        <button id="saveBtn" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       MODAL CONFIGURAÇÕES
+       ═══════════════════════════════════════════════════════════════ -->
+  <div id="configModalOverlay" class="modal-overlay">
+    <div class="modal config-modal">
+      <div class="modal-header">
+        <h2 class="modal-title">⚙️ Configurações do Sistema</h2>
+        <button id="closeConfigModalBtn" class="close-modal">×</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- PROJETOS -->
+        <div class="config-section">
+          <h3 class="config-section-title">📁 Projetos</h3>
+          <p class="config-section-desc">
+            Gerencie a lista de projetos disponíveis para os flows
+          </p>
+
+          <div class="config-list-container">
+            <ul id="projetosList" class="config-list">
+              <!-- Itens serão inseridos via JavaScript -->
+            </ul>
+          </div>
+
+          <div class="config-add-item">
+            <input
+              type="text"
+              id="newProjetoConfigInput"
+              placeholder="Nome do novo projeto"
+              class="config-input"
+            />
+            <button id="addProjetoBtn" class="btn btn-primary">
+              ➕ Adicionar
+            </button>
+          </div>
+        </div>
+
+        <hr class="config-divider" />
+
+        <!-- TIPOS DE GATILHO -->
+        <div class="config-section">
+          <h3 class="config-section-title">⚡ Tipos de Gatilho</h3>
+          <p class="config-section-desc">
+            Gerencie a lista de tipos de gatilho disponíveis
+          </p>
+
+          <div class="config-list-container">
+            <ul id="gatilhosList" class="config-list">
+              <!-- Itens serão inseridos via JavaScript -->
+            </ul>
+          </div>
+
+          <div class="config-add-item">
+            <input
+              type="text"
+              id="newGatilhoConfigInput"
+              placeholder="Nome do novo tipo de gatilho"
+              class="config-input"
+            />
+            <button id="addGatilhoBtn" class="btn btn-primary">
+              ➕ Adicionar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="clearCacheBtn" class="btn btn-secondary" style="margin-right: auto;">
+          🗑️ Limpar Cache
+        </button>
+        <button id="closeConfigBtn" class="btn btn-secondary">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       MODAL ADICIONAR/EDITAR APLICATIVO
+       ═══════════════════════════════════════════════════════════════ -->
+  <div id="modalAppOverlay" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalAppTitle" class="modal-title">Adicionar Novo Aplicativo</h2>
+        <button id="closeModalAppBtn" class="close-modal">×</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="appForm">
+          <!-- Nome -->
+          <div class="form-group">
+            <label for="appNome">Nome do Aplicativo *</label>
+            <input
+              type="text"
+              id="appNome"
+              placeholder="Ex: ME28 Aprovação de Pedidos"
+              required
+            />
+          </div>
+
+          <!-- Projeto -->
+          <div class="form-group">
+            <label for="appProjeto">Projeto *</label>
+            <select id="appProjeto" required>
+              <option value="">Selecione um projeto</option>
+            </select>
+          </div>
+
+          <!-- Link -->
+          <div class="form-group">
+            <label for="appLink">Link do Aplicativo</label>
+            <input
+              type="url"
+              id="appLink"
+              placeholder="https://apps.powerapps.com/..."
+            />
+          </div>
+
+          <!-- Descrição (Para que serve) -->
+          <div class="form-group">
+            <label for="appDescricao">Para que serve? *</label>
+            <textarea
+              id="appDescricao"
+              placeholder="Descreva a função e objetivo deste aplicativo..."
+              required
+            ></textarea>
+          </div>
+
+          <!-- Status -->
+          <div class="form-group">
+            <label>Status *</label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input
+                  type="radio"
+                  id="appStatusAtivo"
+                  name="appStatus"
+                  value="ativo"
+                  checked
+                />
+                <label for="appStatusAtivo">✅ Ativo</label>
+              </div>
+              <div class="radio-option">
+                <input
+                  type="radio"
+                  id="appStatusInativo"
+                  name="appStatus"
+                  value="inativo"
+                />
+                <label for="appStatusInativo">⛔ Inativo</label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" id="cancelAppBtn" class="btn btn-secondary">Cancelar</button>
+        <button type="button" id="saveAppBtn" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       MODAL ADICIONAR/EDITAR PIPELINE
+       ═══════════════════════════════════════════════════════════════ -->
+  <div id="modalPipelineOverlay" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalPipelineTitle" class="modal-title">Adicionar Novo Pipeline</h2>
+        <button id="closeModalPipelineBtn" class="close-modal">×</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="pipelineForm">
+          <!-- Nome -->
+          <div class="form-group">
+            <label for="pipelineNome">Nome do Pipeline *</label>
+            <input
+              type="text"
+              id="pipelineNome"
+              placeholder="Ex: ETL ME28 Diário"
+              required
+            />
+          </div>
+
+          <!-- Projeto -->
+          <div class="form-group">
+            <label for="pipelineProjeto">Projeto *</label>
+            <select id="pipelineProjeto" required>
+              <option value="">Selecione um projeto</option>
+            </select>
+          </div>
+
+          <!-- Periodicidade -->
+          <div class="form-group">
+            <label for="pipelinePeriodicidade">Periodicidade *</label>
+            <input
+              type="text"
+              id="pipelinePeriodicidade"
+              placeholder="Ex: Diário às 07:00, A cada 15 minutos, Semanal"
+              required
+            />
+          </div>
+
+          <!-- Link do Repositório GitHub -->
+          <div class="form-group">
+            <label for="pipelineRepoLink">Link do Repositório GitHub (opcional)</label>
+            <input
+              type="url"
+              id="pipelineRepoLink"
+              placeholder="Ex: https://github.com/usuario/repositorio"
+            />
+          </div>
+
+          <!-- Descrição/Resumo -->
+          <div class="form-group">
+            <label for="pipelineDescricao">Resumo *</label>
+            <textarea
+              id="pipelineDescricao"
+              placeholder="Descreva o que este pipeline faz..."
+              required
+            ></textarea>
+          </div>
+
+          <!-- Status -->
+          <div class="form-group">
+            <label>Status *</label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input
+                  type="radio"
+                  id="pipelineStatusAtivo"
+                  name="pipelineStatus"
+                  value="ativo"
+                  checked
+                />
+                <label for="pipelineStatusAtivo">✅ Ativo</label>
+              </div>
+              <div class="radio-option">
+                <input
+                  type="radio"
+                  id="pipelineStatusInativo"
+                  name="pipelineStatus"
+                  value="inativo"
+                />
+                <label for="pipelineStatusInativo">⛔ Inativo</label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" id="cancelPipelineBtn" class="btn btn-secondary">Cancelar</button>
+        <button type="button" id="savePipelineBtn" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       MODAL ADICIONAR/EDITAR DASHBOARD
+       ═══════════════════════════════════════════════════════════════ -->
+  <div id="modalDashboardOverlay" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalDashboardTitle" class="modal-title">Adicionar Novo Dashboard/Relatório</h2>
+        <button id="closeModalDashboardBtn" class="close-modal">×</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="dashboardForm">
+          <!-- Nome -->
+          <div class="form-group">
+            <label for="dashboardNome">Nome do Dashboard/Relatório *</label>
+            <input
+              type="text"
+              id="dashboardNome"
+              placeholder="Ex: Dashboard ME28 - Indicadores"
+              required
+            />
+          </div>
+
+          <!-- Projeto -->
+          <div class="form-group">
+            <label for="dashboardProjeto">Projeto *</label>
+            <select id="dashboardProjeto" required>
+              <option value="">Selecione um projeto</option>
+            </select>
+          </div>
+
+          <!-- Tipo -->
+          <div class="form-group">
+            <label for="dashboardTipo">Tipo *</label>
+            <select id="dashboardTipo" required>
+              <option value="">Selecione um tipo</option>
+            </select>
+          </div>
+
+          <!-- Link -->
+          <div class="form-group">
+            <label for="dashboardLink">Link (se aplicável)</label>
+            <input
+              type="url"
+              id="dashboardLink"
+              placeholder="https://app.powerbi.com/..."
+            />
+          </div>
+
+          <!-- Descrição -->
+          <div class="form-group">
+            <label for="dashboardDescricao">Descrição *</label>
+            <textarea
+              id="dashboardDescricao"
+              placeholder="Descreva o objetivo deste dashboard/relatório..."
+              required
+            ></textarea>
+          </div>
+
+          <!-- Frequência de Atualização -->
+          <div class="form-group">
+            <label for="dashboardFrequencia">Frequência de Atualização</label>
+            <input
+              type="text"
+              id="dashboardFrequencia"
+              placeholder="Ex: Tempo real, Diário, Semanal, Mensal"
+            />
+          </div>
+
+          <!-- Status -->
+          <div class="form-group">
+            <label>Status *</label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input
+                  type="radio"
+                  id="dashboardStatusAtivo"
+                  name="dashboardStatus"
+                  value="ativo"
+                  checked
+                />
+                <label for="dashboardStatusAtivo">✅ Ativo</label>
+              </div>
+              <div class="radio-option">
+                <input
+                  type="radio"
+                  id="dashboardStatusInativo"
+                  name="dashboardStatus"
+                  value="inativo"
+                />
+                <label for="dashboardStatusInativo">⛔ Inativo</label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" id="cancelDashboardBtn" class="btn btn-secondary">Cancelar</button>
+        <button type="button" id="saveDashboardBtn" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       MODAL DE CONFIRMAÇÃO CUSTOMIZADO
+       ═══════════════════════════════════════════════════════════════ -->
+  <div id="confirmModalOverlay" class="modal-overlay">
+    <div class="modal confirm-modal">
+      <div class="confirm-icon-container">
+        <svg class="confirm-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+      </div>
+      <h3 id="confirmTitle" class="confirm-title"></h3>
+      <p id="confirmMessage" class="confirm-message"></p>
+      <div class="confirm-footer">
+        <button id="confirmCancelBtn" class="btn btn-secondary">Cancelar</button>
+        <button id="confirmOkBtn" class="btn btn-danger">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       TOAST NOTIFICAÇÃO
+       ═══════════════════════════════════════════════════════════════ -->
+  <div id="toast" class="toast"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       JAVASCRIPT
+       ═══════════════════════════════════════════════════════════════ -->
+  <script src="script.js"></script>
+</body>
+</html>
