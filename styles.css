@@ -100,7 +100,7 @@ body {
   background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-darker) 100%);
   color: white;
   padding: var(--space-lg) 0;
-  box-shadow: 0 4px 20px rgba(200, 16, 46, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 120, 212, 0.25);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -306,7 +306,7 @@ body {
   outline: none;
   border-color: var(--primary-blue);
   background: white;
-  box-shadow: 0 0 0 4px rgba(200, 16, 46, 0.1);
+  box-shadow: 0 0 0 4px rgba(0, 120, 212, 0.1);
   transform: translateY(-1px);
 }
 
@@ -370,7 +370,7 @@ body {
 
 .flow-card:hover {
   transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 12px 24px rgba(200, 16, 46, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 24px rgba(0, 120, 212, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
   border-color: var(--primary-blue-light);
 }
 
@@ -595,7 +595,7 @@ body {
 
 .fab:hover {
   transform: scale(1.1);
-  box-shadow: 0 20px 30px -5px rgba(200, 16, 46, 0.4);
+  box-shadow: 0 20px 30px -5px rgba(0, 120, 212, 0.4);
   background: var(--primary-blue-light);
 }
 
@@ -733,7 +733,7 @@ body {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary-blue);
-  box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.08);
+  box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.08);
 }
 
 .form-group textarea {
@@ -1006,7 +1006,7 @@ body {
 .config-input:focus {
   outline: none;
   border-color: var(--primary-blue);
-  box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.08);
+  box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.08);
 }
 
 .config-divider {
